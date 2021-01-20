@@ -1,40 +1,48 @@
 package com.android.view
 
-import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.RadioButton
-import android.widget.RadioGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.android.view.databinding.ActivityMainBinding
+import com.android.view.demo.NumberKeyboardFragment
+import com.android.view.demo.TextFragment
+import com.android.view.demo.ZXingFragment
+import com.qw.framework.App
+import com.qw.framework.AppStateTracker
+import com.qw.framework.ui.QFragmentActivity
+import com.qw.framework.ui.SupportListFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SupportListFragment.OnListItemClickListener {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        App.init(application, MainActivity::class.java)
+        AppStateTracker.getInstance().appState = AppStateTracker.APP_STATE_ONLINE
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.mGravityRadioGroup.setOnCheckedChangeListener { _: RadioGroup, checkedId: Int ->
-            when (checkedId) {
-                R.id.mGravityRadioButton1 -> {
-                    binding.mQTextView.setTextAlign(Paint.Align.LEFT)
-                    binding.mTextView.gravity = Gravity.START
-                }
-                R.id.mGravityRadioButton2 -> {
-                    binding.mQTextView.setTextAlign(Paint.Align.CENTER)
-                    binding.mTextView.gravity = Gravity.CENTER
-                }
-                R.id.mGravityRadioButton3 -> {
-                    binding.mQTextView.setTextAlign(Paint.Align.RIGHT)
-                    binding.mTextView.gravity = Gravity.END
-                }
-            }
-        }
-        binding.mColorRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-            val color = findViewById<RadioButton>(checkedId).currentTextColor
-            binding.mTextView.setTextColor(color)
-            binding.mQTextView.setTextColor(color)
-        }
+        binding.mQToolbar.title = "Demo"
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.mFragmentContainerView,
+                SupportListFragment.newInstance(ArrayList<QFragmentActivity.Clazz>().apply {
+                    this.add(QFragmentActivity.Clazz("Text", TextFragment::class.java))
+                    this.add(
+                        QFragmentActivity.Clazz(
+                            "NumberKeyboard",
+                            NumberKeyboardFragment::class.java
+                        )
+                    )
+                    this.add(
+                        QFragmentActivity.Clazz(
+                            "zxing",
+                            ZXingFragment::class.java
+                        )
+                    )
+                })
+            ).commitAllowingStateLoss()
+    }
+
+    override fun onListItemClick(clazzInfo: QFragmentActivity.Clazz?) {
+        startActivity(QFragmentActivity.getIntent(this, clazzInfo))
     }
 }

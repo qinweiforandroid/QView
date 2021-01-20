@@ -1,3 +1,5 @@
+include ':zxing'
+include ':keyboard'
 include ':text'
 include ':view'
 include ':app'

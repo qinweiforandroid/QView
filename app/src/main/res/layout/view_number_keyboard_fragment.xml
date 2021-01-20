@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/key_line_4">
+
+    <TextView
+        android:id="@+id/mKNValueLabel"
+        style="@style/TextAppearance.H6"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical|right"
+        android:text="H6" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mNK1"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="1"
+            android:textAppearance="@style/TextAppearance.H6" />
+
+        <Button
+            android:id="@+id/mNK2"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="@dimen/key_line_2"
+            android:layout_marginRight="@dimen/key_line_2"
+            android:layout_weight="1"
+            android:text="2"
+            android:textAppearance="@style/TextAppearance.H6" />
+
+        <Button
+            android:id="@+id/mNK3"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="3"
+            android:textAppearance="@style/TextAppearance.H6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mNK4"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="4"
+            android:textAppearance="@style/TextAppearance.H6" />
+
+        <Button
+            android:id="@+id/mNK5"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="@dimen/key_line_2"
+            android:layout_marginRight="@dimen/key_line_2"
+            android:layout_weight="1"
+            android:text="5"
+            android:textAppearance="@style/TextAppearance.H6" />
+
+        <Button
+            android:id="@+id/mNK6"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="6"
+            android:textAppearance="@style/TextAppearance.H6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mNK7"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="7"
+            android:textAppearance="@style/TextAppearance.H6" />
+
+        <Button
+            android:id="@+id/mNK8"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="@dimen/key_line_2"
+            android:layout_marginRight="@dimen/key_line_2"
+            android:layout_weight="1"
+            android:text="8"
+            android:textAppearance="@style/TextAppearance.H6" />
+
+        <Button
+            android:id="@+id/mNK9"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="9"
+            android:textAppearance="@style/TextAppearance.H6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mNKDot"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="."
+            android:textAppearance="@style/TextAppearance.H6" />
+
+        <Button
+            android:id="@+id/mNK0"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="@dimen/key_line_2"
+            android:layout_marginRight="@dimen/key_line_2"
+            android:layout_weight="1"
+            android:text="0"
+            android:textAppearance="@style/TextAppearance.H6" />
+
+        <Button
+            android:id="@+id/mNKClear"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="清除"
+            android:textAppearance="@style/TextAppearance.H6" />
+    </LinearLayout>
+</LinearLayout>
