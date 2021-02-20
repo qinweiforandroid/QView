@@ -1,7 +1,9 @@
+include ':list'
+include ':loading'
+include ':editor'
 include ':toolbar'
 include ':zxing'
 include ':keyboard'
 include ':text'
-include ':view'
 include ':app'
 rootProject.name = "QView"

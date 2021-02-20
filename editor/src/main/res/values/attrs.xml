@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EditorView">
+        <attr name="ev_hint" format="reference|string" />
+        <attr name="android:gravity" />
+        <attr name="android:inputType" />
+        <attr name="android:minEms" />
+        <attr name="android:maxEms" />
+        <attr name="android:maxLength" />
+        <attr name="ev_label" format="reference|string" />
+        <attr name="ev_bg_editor" format="reference" />
+        <attr name="ev_left_icon" format="reference" />
+        <attr name="ev_text" format="reference|string" />
+        <attr name="android:singleLine" />
+    </declare-styleable>
+</resources>
