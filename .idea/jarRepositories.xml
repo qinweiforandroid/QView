@@ -26,5 +26,10 @@
       <option name="name" value="qinwei" />
       <option name="url" value="https://dl.bintray.com/qinwei/maven" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="http://192.168.1.20:8081/repository/maven-public/" />
+    </remote-repository>
   </component>
 </project>

@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/keyboard" />
             <option value="$PROJECT_DIR$/text" />
+            <option value="$PROJECT_DIR$/toolbar" />
             <option value="$PROJECT_DIR$/view" />
             <option value="$PROJECT_DIR$/zxing" />
           </set>
