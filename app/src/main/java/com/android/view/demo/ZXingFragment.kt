@@ -15,7 +15,7 @@ import androidx.core.content.ContextCompat
 import com.android.view.databinding.ViewZxingFragmentBinding
 import com.android.view.demo.zxing.CaptureQRCodeActivity
 import com.idaddy.android.zxing.Intents
-import com.qw.framework.ui.BaseFragment
+import com.qw.framework.core.ui.BaseFragment
 
 /**
  * Created by qinwei on 1/20/21 7:19 PM

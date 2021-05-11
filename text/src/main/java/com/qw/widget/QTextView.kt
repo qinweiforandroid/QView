@@ -7,9 +7,9 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import com.qw.utils.Trace
 import java.util.*
 
 /**
@@ -200,7 +200,7 @@ class QTextView : View {
         val top = fontMetrics.top
         val bottom = fontMetrics.bottom
         val leading = fontMetrics.leading
-        Trace.d("fontMetrics\nbaseline:$baseline \nascent:$ascent\ndescent:$descent\ntop:$top\nbottom:$bottom\nleading:$leading\ntextSize:$textSize\nlineHeight:${getLineHeight()}")
+        Log.d("QTextView","fontMetrics\nbaseline:$baseline \nascent:$ascent\ndescent:$descent\ntop:$top\nbottom:$bottom\nleading:$leading\ntextSize:$textSize\nlineHeight:${getLineHeight()}")
         //ascent line
         mPaint.color = Color.GREEN
         canvas.drawLine(0f, baseline + ascent, width.toFloat(), baseline + ascent, mPaint)

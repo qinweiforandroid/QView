@@ -32,6 +32,7 @@ allprojects {
                 password properties.getProperty('NEXUS_PASSWORD')
             }
         }
+        mavenLocal()
     }
 }
 

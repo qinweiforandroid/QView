@@ -10,7 +10,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.android.view.R
 import com.android.view.databinding.ViewTextFragmentBinding
-import com.qw.framework.ui.BaseFragment
+import com.qw.framework.core.ui.BaseFragment
 
 /**
  * Created by qinwei on 1/19/21 2:44 PM

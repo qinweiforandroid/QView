@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context="com.android.view.MainActivity">
 
-    <com.qw.framework.widget.QToolbar
+    <com.qw.widget.appbar.QToolbar
         android:id="@+id/mQToolbar"
         style="@style/Toolbar"
         android:layout_width="match_parent"

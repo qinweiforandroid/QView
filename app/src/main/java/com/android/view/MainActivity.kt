@@ -6,18 +6,23 @@ import com.android.view.databinding.ActivityMainBinding
 import com.android.view.demo.NumberKeyboardFragment
 import com.android.view.demo.TextFragment
 import com.android.view.demo.ZXingFragment
-import com.qw.framework.App
-import com.qw.framework.AppStateTracker
+import com.qw.framework.ThemeImpl
+import com.qw.framework.core.App
+import com.qw.framework.core.AppStateTracker
+import com.qw.framework.core.theme.Theme
 import com.qw.framework.ui.QFragmentActivity
 import com.qw.framework.ui.SupportListFragment
+import com.qw.theme.Themes
 
 class MainActivity : AppCompatActivity(), SupportListFragment.OnListItemClickListener {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        App.init(application, MainActivity::class.java)
-        AppStateTracker.getInstance().appState = AppStateTracker.APP_STATE_ONLINE
+        App.init(App.Builder(this))
+        Theme.inject(ThemeImpl())
+        AppStateTracker.init(application)
+        AppStateTracker.online()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.mQToolbar.title = "Demo"
