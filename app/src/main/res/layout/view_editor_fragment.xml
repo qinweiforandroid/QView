@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/key_line_4"
+    android:orientation="vertical">
+    <com.qw.widget.editor.EditorView
+        android:id="@+id/mMobileEditorView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="18"
+        android:paddingTop="4dp"
+        android:layout_marginTop="32dp"
+        android:paddingBottom="4dp"
+        app:ev_bg_editor="@android:color/transparent"
+        app:ev_hint="输入手机号码"
+        app:ev_left_icon="@drawable/ic_smartphone_black_24dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="2dp"
+        android:background="?attr/colorLine" />
+
+    <com.qw.widget.editor.EditorView
+        android:id="@+id/mValidateCodeEditorView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="18"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        app:ev_bg_editor="@android:color/transparent"
+        app:ev_hint="输入手机收到的验证码" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="2dp"
+        android:background="?attr/colorLine" />
+
+
+    <com.qw.widget.editor.EditorView
+        app:ev_label="用户名"
+        app:ev_text="qinwei"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        app:ev_bg_editor="@android:color/transparent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="2dp"
+        android:background="?attr/colorLine" />
+    <com.qw.widget.editor.EditorView
+        app:ev_label="密    码"
+        app:ev_text="123456"
+        android:inputType="textPassword"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        app:ev_bg_editor="@android:color/transparent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="2dp"
+        android:background="?attr/colorLine" />
+
+</LinearLayout>

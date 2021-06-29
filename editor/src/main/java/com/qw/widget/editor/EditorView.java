@@ -22,7 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class EditorView extends LinearLayout implements TextWatcher, OnClickListener, OnFocusChangeListener {
+public class EditorView extends LinearLayout implements  OnClickListener, OnFocusChangeListener {
     private EditText mEditorViewContentEdt;
     private ImageView mEditorViewClearImg;
     private TextView mEditorViewLabel;
@@ -55,35 +55,34 @@ public class EditorView extends LinearLayout implements TextWatcher, OnClickList
         mEditorViewClearImg = (ImageView) findViewById(R.id.mEditorViewClearImg);
         mEditorViewClearImg.setOnClickListener(this);
         mEditorViewContentEdt.setOnFocusChangeListener(this);
-        mEditorViewContentEdt.addTextChangedListener(this);
+        mEditorViewContentEdt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (listener != null) {
+                    listener.onTextChanged(s);
+                }
+                if(!TextUtils.isEmpty(s)&&mEditorViewContentEdt.isEnabled()&&mEditorViewContentEdt.hasFocus()){
+                    mEditorViewClearImg.setVisibility(View.VISIBLE);
+                }else{
+                    mEditorViewClearImg.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         mEditorViewClearImg.setVisibility(View.GONE);
         parseAttr(context, attrs);
         if (mEditorViewLabel.getText().toString().isEmpty() || !isEnabled()) {
             mEditorViewLabel.setVisibility(View.GONE);
         }
-    }
-
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (listener != null) {
-            listener.onTextChanged(s);
-        }
-        if (TextUtils.isEmpty(s) || !mEditorViewContentEdt.isEnabled() || !isFocused()) {
-            mEditorViewClearImg.setVisibility(View.GONE);
-        } else {
-            mEditorViewClearImg.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-
     }
 
     @Override

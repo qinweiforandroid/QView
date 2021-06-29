@@ -3,6 +3,7 @@ package com.android.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.view.databinding.ActivityMainBinding
+import com.android.view.demo.EditorFragment
 import com.android.view.demo.NumberKeyboardFragment
 import com.android.view.demo.TextFragment
 import com.android.view.demo.ZXingFragment
@@ -20,9 +21,9 @@ class MainActivity : AppCompatActivity(), SupportListFragment.OnListItemClickLis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         App.init(App.Builder(this))
+        App.online()
         Theme.inject(ThemeImpl())
         AppStateTracker.init(application)
-        AppStateTracker.online()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.mQToolbar.title = "Demo"
@@ -30,24 +31,19 @@ class MainActivity : AppCompatActivity(), SupportListFragment.OnListItemClickLis
             .replace(
                 R.id.mFragmentContainerView,
                 SupportListFragment.newInstance(ArrayList<QFragmentActivity.Clazz>().apply {
-                    this.add(QFragmentActivity.Clazz("Text", TextFragment::class.java))
-                    this.add(
-                        QFragmentActivity.Clazz(
-                            "NumberKeyboard",
-                            NumberKeyboardFragment::class.java
-                        )
-                    )
-                    this.add(
-                        QFragmentActivity.Clazz(
-                            "zxing",
-                            ZXingFragment::class.java
-                        )
-                    )
+                    applySampleList(this)
                 })
             ).commitAllowingStateLoss()
     }
 
-    override fun onListItemClick(clazzInfo: QFragmentActivity.Clazz?) {
+    private fun applySampleList(list: java.util.ArrayList<QFragmentActivity.Clazz>) {
+        list.add(QFragmentActivity.Clazz("Editor", EditorFragment::class.java))
+        list.add(QFragmentActivity.Clazz("Text", TextFragment::class.java))
+        list.add(QFragmentActivity.Clazz("NumberKeyboard", NumberKeyboardFragment::class.java))
+        list.add(QFragmentActivity.Clazz("zxing", ZXingFragment::class.java))
+    }
+
+    override fun onListItemClick(clazzInfo: QFragmentActivity.Clazz) {
         startActivity(QFragmentActivity.getIntent(this, clazzInfo))
     }
 }
