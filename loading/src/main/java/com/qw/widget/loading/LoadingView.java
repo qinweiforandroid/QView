@@ -4,9 +4,10 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
 
 
 /**
@@ -17,50 +18,38 @@ import android.widget.LinearLayout;
  * @author qinwei create by 2015/10/28
  * update time 2020/12/3
  */
-public class LoadingView extends FrameLayout implements OnClickListener {
+public class LoadingView extends FrameLayout implements ILoading {
 
     private LinearLayout empty;
     private LinearLayout error;
     private LinearLayout loading;
     private State state;
-    private OnRetryListener listener;
     /**
      * 由外部注入
      */
     private View contentView;
 
-    public interface OnRetryListener {
-        /**
-         * 点击操作按钮回调
-         */
-        void onRetry();
-    }
-
-    public enum State {
-        ing, error, done, empty
-    }
-
     public LoadingView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initializeView(context);
+        initView(context);
     }
 
     public LoadingView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initializeView(context);
+        initView(context);
     }
 
     public LoadingView(Context context) {
         super(context);
-        initializeView(context);
+        initView(context);
     }
 
-    private void initializeView(Context context) {
+    private void initView(Context context) {
         LayoutInflater.from(context).inflate(R.layout.widget_refresh_view, this);
         empty = (LinearLayout) findViewById(R.id.empty);
         loading = (LinearLayout) findViewById(R.id.loading);
         error = (LinearLayout) findViewById(R.id.error);
-        notifyDataChanged(State.ing);
+        notifyDataChanged(State.done);
     }
 
     public void notifyDataChanged(State state) {
@@ -114,36 +103,53 @@ public class LoadingView extends FrameLayout implements OnClickListener {
         setEmptyView(view);
     }
 
+    @Override
+    public void setErrorView(int layoutId) {
+        View view = LayoutInflater.from(getContext()).inflate(layoutId, null);
+        setErrorView(view);
+    }
+
+    @Override
     public void setLoadingView(View view) {
         loading.removeAllViews();
         loading.addView(view, getLayoutParams());
     }
 
+    @Override
     public void setErrorView(View view) {
         loading.removeAllViews();
         loading.addView(view, getLayoutParams());
     }
 
+    @Override
+    public void setLoadingView(int layoutId) {
+        View view = LayoutInflater.from(getContext()).inflate(layoutId, null);
+        setLoadingView(view);
+    }
+
+    @Override
     public void setOnRetryListener(OnRetryListener listener) {
-        this.listener = listener;
-        if (listener != null) {
-            View retry = findViewById(R.id.retry);
-            if (retry != null) {
-                retry.setOnClickListener(this);
-            } else {
-                setOnClickListener(this);
-            }
+        if (listener == null) {
+            return;
+        }
+        View retry = findViewById(R.id.retry);
+        if (retry != null) {
+            retry.setOnClickListener(v -> {
+                if (state == State.error) {
+                    listener.onRetry();
+                }
+            });
+        } else {
+            setOnClickListener(v -> {
+                if (state == State.error) {
+                    listener.onRetry();
+                }
+            });
         }
     }
 
     @Override
-    public void onClick(View v) {
-        if (listener != null && state == State.error) {
-            listener.onRetry();
-        }
-    }
-
-    public void setUpContentView(View view) {
+    public void setContentView(@NonNull View view) {
         this.contentView = view;
     }
 }
