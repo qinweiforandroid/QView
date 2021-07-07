@@ -1,0 +1,13 @@
+ext {
+    dependenciesResourceCode = true
+
+    compileSdkVersion = 30
+    buildToolsVersion = "30.0.3"
+
+    minSdkVersion = 16
+    targetSdkVersion = 30
+
+    junit = '4.13.2'
+    android_junit = '1.1.2'
+    espresso_core = '3.3.0'
+}

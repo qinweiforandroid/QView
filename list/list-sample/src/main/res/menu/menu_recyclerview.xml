@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_add"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="新增一条记录" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="删除一条记录" />
+
+    <item
+        android:id="@+id/action_linearLayout"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="LinearLayoutManager" />
+    <item
+        android:id="@+id/action_gridLayout"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="GridLayoutManager" />
+    <item
+        android:id="@+id/action_staggeredGridLayout"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="StaggeredGridLayoutManager" />
+</menu>

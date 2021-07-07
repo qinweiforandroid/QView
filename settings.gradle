@@ -7,3 +7,5 @@ include ':keyboard'
 include ':text'
 include ':app'
 rootProject.name = "QView"
+include ':list:list-base'
+include ':list:list-sample'
