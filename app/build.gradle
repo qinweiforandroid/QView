@@ -41,7 +41,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.qw.framework:extend:0.0.1-alpha'
+    api "com.qw.framework:framework-base-support:0.0.1-alpha"
     implementation project(path: ':editor')
     implementation project(path: ':text')
     implementation project(path: ':keyboard')
