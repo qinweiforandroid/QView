@@ -117,8 +117,8 @@ public class LoadingView extends FrameLayout implements ILoading {
 
     @Override
     public void setErrorView(View view) {
-        loading.removeAllViews();
-        loading.addView(view, getLayoutParams());
+        error.removeAllViews();
+        error.addView(view, getLayoutParams());
     }
 
     @Override
