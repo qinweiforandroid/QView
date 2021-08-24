@@ -4,10 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.view.databinding.ActivityMainBinding
-import com.android.view.demo.EditorFragment
-import com.android.view.demo.NumberKeyboardFragment
-import com.android.view.demo.TextFragment
-import com.android.view.demo.ZXingFragment
+import com.android.view.demo.*
 import com.qw.framework.ThemeImpl
 import com.qw.framework.core.App
 import com.qw.framework.core.AppStateTracker
@@ -43,6 +40,7 @@ class MainActivity : AppCompatActivity(), SupportListFragment.OnListItemClickLis
     }
 
     private fun applySampleList(list: java.util.ArrayList<QFragmentActivity.Clazz>) {
+        list.add(QFragmentActivity.Clazz("AnnularView", AnnularViewFragment::class.java))
         list.add(QFragmentActivity.Clazz("Editor", EditorFragment::class.java))
         list.add(QFragmentActivity.Clazz("Text", TextFragment::class.java))
         list.add(QFragmentActivity.Clazz("NumberKeyboard", NumberKeyboardFragment::class.java))
