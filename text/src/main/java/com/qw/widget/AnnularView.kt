@@ -1,5 +1,6 @@
 package com.qw.widget
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -14,6 +15,7 @@ class AnnularView : View {
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
 
     private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val mBgPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     /**
      * 圓弧的描述数据
@@ -35,6 +37,10 @@ class AnnularView : View {
      */
     private var max = 0
 
+    private var progress: Float = 0F
+    fun setProgress(progress: Float) {
+        this.progress = progress
+    }
 
     init {
         // 画线模式
@@ -42,15 +48,22 @@ class AnnularView : View {
         mPaint.strokeWidth = 36f
         //线头形状 ROUND 圆头
         mPaint.strokeCap = Paint.Cap.ROUND
+
+        //圆环背景画笔
+        mBgPaint.style = Paint.Style.STROKE
+        mBgPaint.strokeWidth = 36f
+        mBgPaint.color = Color.parseColor("#F1F2F5")
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        //圆环背景
+//        canvas.drawArc(mRectF, 0F, 360F, false, mBgPaint)
         //缓存下一个圆弧的起始位置
         var curStartAngle = startAngle
         for (annular in annulars) {
             mPaint.color = annular.color
-            val sweepAngle = sweep(annular.progress)
+            val sweepAngle = sweep(annular.progress) * progress
             canvas.drawArc(mRectF, curStartAngle, sweepAngle, false, mPaint)
             //更新下一個圆弧起始位置
             curStartAngle += sweepAngle
@@ -69,6 +82,7 @@ class AnnularView : View {
      */
     fun setStrokeWidth(width: Float): AnnularView {
         mPaint.strokeWidth = width
+        mBgPaint.strokeWidth = width
         return this
     }
 
@@ -77,6 +91,7 @@ class AnnularView : View {
      */
     fun setStrokeCap(cap: Paint.Cap): AnnularView {
         mPaint.strokeCap = cap
+        mBgPaint.strokeCap = cap
         return this
     }
 
@@ -96,11 +111,19 @@ class AnnularView : View {
             max += annular.progress
         }
         requestLayout()
+        post {
+            val animator = ObjectAnimator.ofFloat(this, "progress", 0f, 1f)
+            animator.duration = 1500
+            animator.addUpdateListener {
+                invalidate()
+            }
+            animator.start()
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        setPadding((mPaint.strokeWidth/2.0).toInt())
+        setPadding((mPaint.strokeWidth / 2.0).toInt())
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height = MeasureSpec.getSize(heightMeasureSpec)
         val size = width.coerceAtMost(height)

@@ -25,10 +25,9 @@ class AnnularViewFragment : BaseFragment() {
         binding.mAnnularView.setStartAngle(30F)
         binding.mAnnularView.notifyDataChanged(ArrayList<AnnularView.Annular>().apply {
             //mock数据
-            add(AnnularView.Annular(100, Color.GREEN))
-            add(AnnularView.Annular(100, Color.GRAY))
-            add(AnnularView.Annular(100, Color.YELLOW))
-            add(AnnularView.Annular(100, Color.RED))
+            add(AnnularView.Annular(100, Color.parseColor("#FECE55")))
+            add(AnnularView.Annular(100, Color.parseColor("#14D48B")))
+            add(AnnularView.Annular(100, Color.parseColor("#FF5E77")))
         })
     }
 
