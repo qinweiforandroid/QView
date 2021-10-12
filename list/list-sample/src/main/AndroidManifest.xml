@@ -6,6 +6,7 @@
         <activity android:name=".ui.SwipeRefreshLayoutActivity" />
         <activity android:name=".ui.PhotoActivity" />
         <activity android:name=".ui.SectionListActivity" />
+        <activity android:name=".ui.RatingBarActivity" />
         <activity android:name=".ui.InstalledAppActivity" />
     </application>
 </manifest>
