@@ -6,6 +6,9 @@
         <entry key="..\:/projects/QView/app/src/main/res/layout/annular_fragment.xml" value="0.3463541666666667" />
         <entry key="..\:/projects/QView/list/list-sample/src/main/res/layout/rating_bar_activity.xml" value="0.3463541666666667" />
         <entry key="..\:/projects/QView/list/list-sample/src/main/res/layout/star_item_layout.xml" value="0.3463541666666667" />
+        <entry key="app/src/main/res/layout/demo_loading_fragment.xml" value="0.11684782608695653" />
+        <entry key="app/src/main/res/layout/state_view_loading_layout.xml" value="0.11684782608695653" />
+        <entry key="app/src/main/res/menu/menu_loading_view.xml" value="0.1796875" />
       </map>
     </option>
   </component>
@@ -93,7 +96,7 @@
       <textMaps />
     </LinkMapSettings>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

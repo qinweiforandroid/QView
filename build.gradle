@@ -26,13 +26,13 @@ allprojects {
         Properties properties = new Properties()
         InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream();
         properties.load(inputStream)
-        maven {
-            url 'http://192.168.1.20:8081/repository/maven-public/'
-            credentials {
-                username properties.getProperty('NEXUS_USERNAME')
-                password properties.getProperty('NEXUS_PASSWORD')
-            }
-        }
+//        maven {
+//            url 'http://192.168.1.20:8081/repository/maven-public/'
+//            credentials {
+//                username properties.getProperty('NEXUS_USERNAME')
+//                password properties.getProperty('NEXUS_PASSWORD')
+//            }
+//        }
         mavenLocal()
     }
 }

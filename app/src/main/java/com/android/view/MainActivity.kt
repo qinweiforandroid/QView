@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.view.databinding.ActivityMainBinding
 import com.android.view.demo.*
+import com.android.view.demo.loading.LoadingViewFragment
 import com.qw.framework.ThemeImpl
 import com.qw.framework.core.App
 import com.qw.framework.core.AppStateTracker
@@ -13,7 +14,6 @@ import com.qw.framework.core.ui.BaseFragment
 import com.qw.framework.ui.QFragmentActivity
 import com.qw.framework.ui.SupportListFragment
 import com.qw.list.ui.*
-import com.qw.theme.Themes
 
 class MainActivity : AppCompatActivity(), SupportListFragment.OnListItemClickListener {
     private lateinit var binding: ActivityMainBinding
@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity(), SupportListFragment.OnListItemClickLis
         list.add(QFragmentActivity.Clazz("Text", TextFragment::class.java))
         list.add(QFragmentActivity.Clazz("NumberKeyboard", NumberKeyboardFragment::class.java))
         list.add(QFragmentActivity.Clazz("zxing", ZXingFragment::class.java))
+        list.add(QFragmentActivity.Clazz("LoadingView", LoadingViewFragment::class.java))
 
         list.add(QFragmentActivity.Clazz("installedApp", BaseFragment::class.java))
         list.add(QFragmentActivity.Clazz("RatingBarActivity", BaseFragment::class.java))
