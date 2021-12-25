@@ -3,7 +3,6 @@ package com.android.view.demo
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -14,7 +13,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.android.view.databinding.ViewZxingFragmentBinding
 import com.android.view.demo.zxing.CaptureQRCodeActivity
-import com.idaddy.android.zxing.Intents
+import com.android.zxing.Intents
 import com.qw.framework.core.ui.BaseFragment
 
 /**

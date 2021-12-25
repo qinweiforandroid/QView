@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.idaddy.android.zxing.ViewfinderView
+    <com.android.zxing.ViewfinderView
         android:id="@+id/viewfinderView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
