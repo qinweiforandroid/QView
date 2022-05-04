@@ -10,3 +10,4 @@ rootProject.name = "QView"
 include ':list:list-base'
 include ':list:list-sample'
 include ':calendar'
+include ':ffmpeg'
