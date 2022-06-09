@@ -40,6 +40,7 @@ class AnnularView : View {
     private var progress: Float = 0F
     fun setProgress(progress: Float) {
         this.progress = progress
+        invalidate()
     }
 
     init {
