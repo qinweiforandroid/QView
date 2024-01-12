@@ -3,6 +3,7 @@ package com.qw.widget.editor;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Build;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -22,7 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class EditorView extends LinearLayout implements  OnClickListener, OnFocusChangeListener {
+public class EditorView extends LinearLayout implements OnClickListener, OnFocusChangeListener {
     private EditText mEditorViewContentEdt;
     private ImageView mEditorViewClearImg;
     private TextView mEditorViewLabel;
@@ -66,9 +67,9 @@ public class EditorView extends LinearLayout implements  OnClickListener, OnFocu
                 if (listener != null) {
                     listener.onTextChanged(s);
                 }
-                if(!TextUtils.isEmpty(s)&&mEditorViewContentEdt.isEnabled()&&mEditorViewContentEdt.hasFocus()){
+                if (!TextUtils.isEmpty(s) && mEditorViewContentEdt.isEnabled() && mEditorViewContentEdt.hasFocus()) {
                     mEditorViewClearImg.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     mEditorViewClearImg.setVisibility(View.GONE);
                 }
             }
@@ -108,9 +109,6 @@ public class EditorView extends LinearLayout implements  OnClickListener, OnFocu
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void parseAttr(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.EditorView);
-        if (a.hasValue(R.styleable.EditorView_ev_hint)) {
-            mEditorViewContentEdt.setHint(a.getString(R.styleable.EditorView_ev_hint));
-        }
         if (a.hasValue(R.styleable.EditorView_android_inputType)) {
             mEditorViewContentEdt.setInputType(a.getInt(R.styleable.EditorView_android_inputType, InputType.TYPE_CLASS_TEXT));
         }
@@ -126,24 +124,36 @@ public class EditorView extends LinearLayout implements  OnClickListener, OnFocu
         if (a.hasValue(R.styleable.EditorView_android_maxLength)) {
             mEditorViewContentEdt.setFilters(new InputFilter[]{new InputFilter.LengthFilter(a.getInt(R.styleable.EditorView_android_maxLength, Integer.MAX_VALUE))});
         }
-        if (a.hasValue(R.styleable.EditorView_ev_text)) {
-            mEditorViewContentEdt.setText(a.getString(R.styleable.EditorView_ev_text));
+
+        //配置editor样式
+        if (a.hasValue(R.styleable.EditorView_ev_editor_text)) {
+            mEditorViewContentEdt.setText(a.getString(R.styleable.EditorView_ev_editor_text));
         }
+        if (a.hasValue(R.styleable.EditorView_ev_editor_text_size)) {
+            mEditorViewContentEdt.setTextSize(a.getDimension(R.styleable.EditorView_ev_editor_text_size, 12f));
+        }
+        if (a.hasValue(R.styleable.EditorView_ev_editor_text_color)) {
+            mEditorViewContentEdt.setTextColor(a.getColor(R.styleable.EditorView_ev_editor_text_color, Color.parseColor("#333333")));
+        }
+        if (a.hasValue(R.styleable.EditorView_ev_editor_hint)) {
+            mEditorViewContentEdt.setHint(a.getString(R.styleable.EditorView_ev_editor_hint));
+        }
+
         if (a.hasValue(R.styleable.EditorView_android_singleLine)) {
             mEditorViewContentEdt.setSingleLine(a.getBoolean(R.styleable.EditorView_android_singleLine, true));
         }
 
-        if (a.hasValue(R.styleable.EditorView_ev_label)) {
-            mEditorViewLabel.setText(a.getString(R.styleable.EditorView_ev_label));
+        if (a.hasValue(R.styleable.EditorView_ev_label_text)) {
+            mEditorViewLabel.setText(a.getString(R.styleable.EditorView_ev_label_text));
             int left = dip2px(80);
             int right = dip2px(40);
             mEditorViewContentEdt.setPadding(left, 0, right, 0);
         } else {
-            if (a.hasValue(R.styleable.EditorView_ev_left_icon)) {
+            if (a.hasValue(R.styleable.EditorView_ev_icon_src)) {
                 int left = dip2px(60);
                 int right = dip2px(40);
                 mEditorViewContentEdt.setPadding(left, 0, right, 0);
-                mEditorViewIcon.setImageResource(a.getResourceId(R.styleable.EditorView_ev_left_icon, 0));
+                mEditorViewIcon.setImageResource(a.getResourceId(R.styleable.EditorView_ev_icon_src, 0));
             } else {
                 int left = dip2px(8);
                 int right = dip2px(40);
@@ -151,11 +161,6 @@ public class EditorView extends LinearLayout implements  OnClickListener, OnFocu
                 mEditorViewIcon.setVisibility(View.GONE);
             }
         }
-
-        if (a.hasValue(R.styleable.EditorView_ev_bg_editor)) {
-            mEditorViewContentEdt.setBackgroundColor(a.getInt(R.styleable.EditorView_ev_bg_editor, android.R.color.white));
-        }
-
         a.recycle();
     }
 

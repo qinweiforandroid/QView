@@ -28,7 +28,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api project(':list:list-base')
     api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     api 'com.qw.framework:framework-base-viewpager:0.0.1-alpha'

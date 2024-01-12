@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/calendar" />
+            <option value="$PROJECT_DIR$/chart" />
             <option value="$PROJECT_DIR$/editor" />
             <option value="$PROJECT_DIR$/ffmpeg" />
             <option value="$PROJECT_DIR$/keyboard" />
@@ -25,7 +26,6 @@
             <option value="$PROJECT_DIR$/zxing" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
